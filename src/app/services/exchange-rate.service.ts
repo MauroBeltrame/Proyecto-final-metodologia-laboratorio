@@ -1,3 +1,4 @@
+import { CurrencyERA } from './../interfaces/currency-era';
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -12,16 +13,20 @@ export class ExchangeRateService {
   private apiKey: string = '007bc47fd6e7740cb8d342eb';  // Tu clave API
   private apiUrl: string = 'https://v6.exchangerate-api.com/v6';  // URL base de la API
 
-  private url2:string="https://dolarapi.com/v1/cotizaciones";
+  private urlDolarApi:string="https://dolarapi.com/v1/dolares";
+  private urlDolarApi2:string="https://dolarapi.com/v1/cotizaciones";
 
   // Método para obtener las tasas de cambio
-  getExchangeRates(): Observable<any> {
-    const url = `${this.apiUrl}/${this.apiKey}/latest/USD`;  // Ejemplo para obtener tasas desde USD
-    return this.http.get<any>(url);  // Realiza la petición GET
+  getExchangeRates(baseCurrency:string): Observable<CurrencyERA> {
+    return this.http.get<CurrencyERA>(`${this.apiUrl}/${this.apiKey}/latest/${baseCurrency}`);  // Realiza la petición GET
   }
 
   getDolarRates(): Observable<Currency[]> {
-    return this.http.get<Currency[]>(this.url2)
+    return this.http.get<Currency[]>(this.urlDolarApi)
+  }
+
+  getDolarRates2(): Observable<Currency[]> {
+    return this.http.get<Currency[]>(this.urlDolarApi2)
   }
 
   

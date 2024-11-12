@@ -5,4 +5,5 @@ export interface Currency {
   nombre: string;
   moneda: string;
   fechaActualizacion: string;
+  
 }

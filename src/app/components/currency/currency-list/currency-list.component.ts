@@ -13,12 +13,13 @@ export class CurrencyListComponent implements OnInit{
   rates: any;  // Aquí almacenamos las tasas de cambio
   error: string | null = null;  // Aquí almacenamos cualquier error
   dolarRates:Currency[]=[];
+  dolarRates2:Currency[]=[];
 
   constructor(private exchangeRateService: ExchangeRateService) {}
 
   ngOnInit(): void {
     // Llamamos al servicio para obtener las tasas de cambio
-    this.exchangeRateService.getExchangeRates().subscribe({
+    this.exchangeRateService.getExchangeRates("ARS").subscribe({
       next: (response) => {
         this.rates = response.conversion_rates;  // Asignamos las tasas a la variable 'rates'
         console.log(this.rates);
@@ -33,6 +34,21 @@ export class CurrencyListComponent implements OnInit{
       next:(response)=>{
         this.dolarRates=response
         console.log(this.dolarRates);
+      },
+      error: (err) => {
+        this.error = 'Hubo un error al obtener las tasas de cambio.';
+        console.error(err);
+      }
+    })
+
+    this.exchangeRateService.getDolarRates2().subscribe({
+      next:(response)=>{
+        this.dolarRates2=response
+        console.log(this.dolarRates2);
+      },
+      error: (err) => {
+        this.error = 'Hubo un error al obtener las tasas de cambio.';
+        console.error(err);
       }
     })
   }

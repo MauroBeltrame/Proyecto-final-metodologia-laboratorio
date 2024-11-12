@@ -1,0 +1,32 @@
+.currency-card{
+    border: 1px solid black;
+    border-radius: 1rem;
+    width: 15rem;
+}
+
+.currency-title{
+    text-align: center;
+}
+
+.currency-content{
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+    border-top: 1px solid black;
+}
+
+.price{
+    display:flex;
+    flex-direction: column;
+}
+
+p{
+    text-align: center;
+}
+
+.currency-footer{
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+
+}

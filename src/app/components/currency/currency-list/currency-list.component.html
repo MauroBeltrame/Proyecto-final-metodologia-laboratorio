@@ -1,3 +1,5 @@
-@for (currency of dolarRates; track $index) {
-    <app-currency-card [currency]="currency"></app-currency-card>
-}
+<section class="list">
+    @for (currency of dolarRates; track $index) {
+        <app-currency-card [currency]="currency"></app-currency-card>
+    }
+</section>
