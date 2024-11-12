@@ -30,3 +30,13 @@ p{
     gap: .5rem;
 
 }
+
+i{
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: transform 0.2s ease; /* Agrega un efecto visual al pasar el mouse */
+}
+
+i:hover{
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño al pasar el mouse */
+}
